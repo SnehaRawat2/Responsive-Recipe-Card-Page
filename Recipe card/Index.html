@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Recipe Card Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1500&q=80') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            padding: 2rem;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #fff;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            background: #fff3e6;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1rem;
+        }
+
+        .card-content h2 {
+            margin-bottom: 0.5rem;
+            color: #d35400;
+        }
+
+        .card-content p {
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            margin-bottom: 1rem;
+            padding-left: 1.2rem;
+        }
+
+        .toggle-btn {
+            background: #e67e22;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .preparation {
+            display: none;
+            margin-top: 1rem;
+        }
+
+        .prep-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (max-width: 600px) {
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🍽️ Delicious Recipe Cards</h1>
+    <div class="cards-container">
+
+        <div class="card">
+            <img src="images/biryani.jpg" alt="Hyderabadi Biryani">
+            <div class="card-content">
+                <h2>Hyderabadi Biryani</h2>
+                <p>A classic and flavorful rice dish from Hyderabad packed with spices and juicy meat.</p>
+                <ul>
+                    <li>Basmati Rice</li>
+                    <li>Chicken/Mutton</li>
+                    <li>Yogurt, onions, spices</li>
+                </ul>
+                <div class="prep-wrapper">
+                    <div class="preparation">
+                        <p>Marinate the meat with yogurt, ginger-garlic paste, and spices like garam masala, red chili powder, turmeric, and salt. Let it rest for at least 4 hours for deep flavor penetration. Meanwhile, rinse and soak basmati rice for 30 minutes. In a large vessel, boil the rice with whole spices (bay leaves, cloves, cinnamon, cardamom) until it's 70% cooked. In a heavy-bottomed pan, start layering the marinated meat and semi-cooked rice. Between layers, sprinkle fried onions, fresh mint, coriander leaves, and saffron milk. Seal the pot with a tight lid or dough to trap steam and cook on low heat (dum) for 45 minutes. The steam cooks everything evenly and infuses the dish with rich aroma and flavor. Serve hot with raita or mirchi ka salan.</p>
+                    </div>
+                    <button class="toggle-btn" onclick="togglePrep(this)">Show More</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="images/paneer.jpg" alt="Paneer Butter Masala">
+            <div class="card-content">
+                <h2>Paneer Butter Masala</h2>
+                <p>Rich, creamy tomato-based curry with cubes of paneer soaked in buttery goodness.</p>
+                <ul>
+                    <li>Paneer</li>
+                    <li>Tomatoes, cream</li>
+                    <li>Ginger, garlic, spices</li>
+                </ul>
+                <div class="prep-wrapper">
+                    <div class="preparation">
+                        <p>Heat butter in a pan and sauté finely chopped onions until golden. Add ginger-garlic paste and cook for a minute. Add pureed tomatoes and cook until oil separates. Mix in cashew paste for creaminess, then stir in spices like garam masala, red chili, and turmeric. Simmer the gravy and add fresh cream to enrich the texture. Add paneer cubes and cook gently for 5-7 minutes. Garnish with coriander and a swirl of cream. Serve hot with naan or jeera rice.</p>
+                    </div>
+                    <button class="toggle-btn" onclick="togglePrep(this)">Show More</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="images/dosa.jpeg" alt="Masala Dosa">
+            <div class="card-content">
+                <h2>Masala Dosa</h2>
+                <p>Crispy South Indian dosa filled with spicy potato filling, served with chutneys.</p>
+                <ul>
+                    <li>Dosa batter</li>
+                    <li>Potatoes</li>
+                    <li>Mustard seeds, curry leaves</li>
+                </ul>
+                <div class="prep-wrapper">
+                    <div class="preparation">
+                        <p>Ferment dosa batter overnight with a mixture of soaked and ground urad dal and rice. For the filling, boil and mash potatoes. Temper mustard seeds, cumin, curry leaves, green chilies, and onions in oil. Add turmeric and mashed potatoes, then mix well and cook for a few minutes. Heat a tawa, spread a ladleful of batter into a thin circle, and cook until crisp. Place a portion of potato masala in the center and fold the dosa. Serve with coconut chutney and sambar.</p>
+                    </div>
+                    <button class="toggle-btn" onclick="togglePrep(this)">Show More</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function togglePrep(button) {
+            const prep = button.previousElementSibling;
+            if (prep.style.display === 'block') {
+                prep.style.display = 'none';
+                button.textContent = 'Show More';
+            } else {
+                prep.style.display = 'block';
+                button.textContent = 'Show Less';
+            }
+        }
+    </script>
+</body>
+
+</html>
